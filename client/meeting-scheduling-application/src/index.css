@@ -1,9 +1,17 @@
-@import url("https://cdn.syncfusion.com/ej2/material.css");
-
 html {
     scroll-behavior: smooth;
 }
 
 * {
     box-sizing: border-box;
+}
+
+.app {
+    margin-top: 15vh;
+    margin-left: 25vw;
+}
+
+.app h1 {
+    margin-bottom: 5vh;
+    color: #E13636;
 }
