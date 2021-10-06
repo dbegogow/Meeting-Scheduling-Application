@@ -54,3 +54,8 @@ html {
 .rooms-container button span span {
     margin-right: 5px;
 }
+
+.slots-container form {
+    display: flex;
+    flex-direction: column;
+}
