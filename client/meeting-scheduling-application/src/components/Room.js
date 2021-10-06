@@ -2,8 +2,14 @@
 const Room = () => {
     return (
         <button>
-            <span>Name: Iskar</span>
-            <span>Capacity: 8</span>
+            <span>
+                <span>Name: </span>
+                Iskar
+            </span>
+            <span>
+                <span>Capacity: </span>
+                8
+            </span>
         </button>
     );
 };
