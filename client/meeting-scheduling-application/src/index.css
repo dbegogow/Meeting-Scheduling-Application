@@ -58,4 +58,34 @@ html {
 .slots-container form {
     display: flex;
     flex-direction: column;
+    border-right: 1px solid #929292;
+    border-bottom: 1px solid #929292;
+    border-radius: 12px;
+    width: 250px;
+    padding-bottom: 45px;
+}
+
+.slots-container form input {
+    margin: 15px 0;
+    width: 200px;
+    outline: none;
+    border-radius: 12px;
+    border: 1px solid #A4A4A4;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+.slots-container form button {
+    width: 150px;
+    padding: 10px 0;
+    border: 1px solid #A4A4A4;
+    border-radius: 7px;
+    background: #727272;
+    color: #FFF;
+    font-size: 0.9rem;
+}
+
+.slots-container form button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
 }
