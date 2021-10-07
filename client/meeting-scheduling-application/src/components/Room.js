@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 const Room = () => {
     return (
-        <button>
+        <Link to="/slots" className="room">
             <span>
                 <span>Name: </span>
                 Iskar
@@ -10,7 +11,7 @@ const Room = () => {
                 <span>Capacity: </span>
                 8
             </span>
-        </button>
+        </Link>
     );
 };
 
