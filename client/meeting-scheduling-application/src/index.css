@@ -90,3 +90,28 @@ html {
     cursor: pointer;
     transform: scale(1.02);
 }
+
+.slots-container .slots {
+    margin-top: 6vh;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 10px;
+    column-gap: 40px;
+}
+
+.slots-container .slots button {
+    height: 40px;
+    font-size: 1rem;
+    border: 1px solid #A4A4A4;
+    border-radius: 12px;
+    background: #85CF29;
+    color: #FFF;
+}
+
+.slots-container .slots button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    background: #C7FA19;
+    color: #000;
+    transition: 0.3s ease-in-out;
+}

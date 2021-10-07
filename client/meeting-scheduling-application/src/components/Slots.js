@@ -1,5 +1,3 @@
-
-
 const Slots = () => {
     return (
         <div className="slots-container">
@@ -9,6 +7,15 @@ const Slots = () => {
                 <input type="text" id="time" placeholder="01:30" />
                 <button>Search for slots</button>
             </form>
+            <div className="slots">
+                <button>12:30</button>
+                <button>12:30</button>
+                <button>12:30</button>
+                <button>12:30</button>
+                <button>12:30</button>
+                <button>12:30</button>
+                <button>12:30</button>
+            </div>
         </div>
     );
 };
