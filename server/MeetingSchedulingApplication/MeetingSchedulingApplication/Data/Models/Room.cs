@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MeetingSchedulingApplication.Data.Models
@@ -17,5 +18,9 @@ namespace MeetingSchedulingApplication.Data.Models
         public TimeSpan AvailableFrom { get; init; }
 
         public TimeSpan AvailableTo { get; init; }
+
+        public DateTime Date { get; init; }
+
+        public ICollection<Slot> Schedule { get; init; } = new HashSet<Slot>();
     }
 }
