@@ -13,7 +13,7 @@ namespace MeetingSchedulingApplication.Services
         private readonly MeetingSchedulingApplicationDbContext _data;
 
         public SlotsService(MeetingSchedulingApplicationDbContext data)
-            => _data = data;
+            => this._data = data;
 
         public async Task<IEnumerable<SlotServiceModel>> EmptySlots(
             string roomName,
