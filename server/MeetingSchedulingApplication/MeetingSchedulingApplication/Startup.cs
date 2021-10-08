@@ -1,9 +1,11 @@
+using MeetingSchedulingApplication.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using MeetingSchedulingApplication.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MeetingSchedulingApplication
@@ -17,8 +19,25 @@ namespace MeetingSchedulingApplication
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddDbContext<MeetingSchedulingApplicationDbContext>(options => options
+                    .UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                var frontendUrl = this.Configuration.GetValue<string>("frontend_url");
+
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                        .WithOrigins(frontendUrl)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .WithExposedHeaders("totalAmountOfRecords");
+                });
+            });
 
             services.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MeetingSchedulingApplication", Version = "v1" }));
