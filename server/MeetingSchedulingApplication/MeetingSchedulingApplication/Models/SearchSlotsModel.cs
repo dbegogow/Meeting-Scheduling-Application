@@ -2,7 +2,7 @@
 
 namespace MeetingSchedulingApplication.Models
 {
-    public class SearchSlotsFormModel
+    public class SearchSlotsModel
     {
         public string Name { get; init; }
 

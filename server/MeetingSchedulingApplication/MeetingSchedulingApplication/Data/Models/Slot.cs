@@ -4,6 +4,8 @@ namespace MeetingSchedulingApplication.Data.Models
 {
     public class Slot
     {
+        public int Id { get; init; }
+
         public TimeSpan From { get; init; }
 
         public TimeSpan To { get; init; }
