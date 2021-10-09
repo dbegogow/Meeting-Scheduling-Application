@@ -11,7 +11,7 @@ const App = () => {
     useEffect(() => {
         getAllRooms()
             .then(rooms => setRooms(rooms));
-    }, [rooms]);
+    }, []);
 
     return (
         <div className="app">

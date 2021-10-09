@@ -1,12 +1,14 @@
-using MeetingSchedulingApplication.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using MeetingSchedulingApplication.Data;
 using Microsoft.Extensions.Configuration;
 using MeetingSchedulingApplication.Extensions;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MeetingSchedulingApplication.Services.Slots;
+using MeetingSchedulingApplication.Services.Rooms;
 
 namespace MeetingSchedulingApplication
 {
@@ -25,6 +27,13 @@ namespace MeetingSchedulingApplication
 
             services.AddControllers();
 
+            services.AddSwaggerGen(c =>
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MeetingSchedulingApplication", Version = "v1" }));
+
+            services
+                .AddTransient<IRoomsService, RoomsService>()
+                .AddTransient<ISlotsService, SlotsService>();
+
             services.AddCors(options =>
             {
                 var frontendUrl = this.Configuration.GetValue<string>("frontend_url");
@@ -38,9 +47,6 @@ namespace MeetingSchedulingApplication
                         .WithExposedHeaders("totalAmountOfRecords");
                 });
             });
-
-            services.AddSwaggerGen(c =>
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MeetingSchedulingApplication", Version = "v1" }));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -59,6 +65,7 @@ namespace MeetingSchedulingApplication
             app
                 .UseHttpsRedirection()
                 .UseRouting()
+                .UseCors()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {

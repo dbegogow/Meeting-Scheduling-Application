@@ -9,11 +9,11 @@ const Room = ({
         <Link to={`/slots/${id}}`} className="room">
             <span>
                 <span>Name: </span>
-                Iskar
+                {name}
             </span>
             <span>
                 <span>Capacity: </span>
-                8
+                {capacity}
             </span>
         </Link>
     );

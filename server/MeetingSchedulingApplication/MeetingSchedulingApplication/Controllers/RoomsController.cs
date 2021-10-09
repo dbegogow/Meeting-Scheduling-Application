@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using MeetingSchedulingApplication.Services.Rooms;
+using MeetingSchedulingApplication.Services.Models;
 
 namespace MeetingSchedulingApplication.Controllers
 {
@@ -8,7 +11,18 @@ namespace MeetingSchedulingApplication.Controllers
     [ApiController]
     public class RoomsController : ControllerBase
     {
-        //[HttpGet]
-        //public async Task<ActionResult<List<>>>
+        private readonly IRoomsService _rooms;
+
+        public RoomsController(IRoomsService rooms)
+            => this._rooms = rooms;
+
+        [HttpGet]
+        public async Task<ActionResult<List<RoomServiceModel>>> Get()
+        {
+            var rooms = await this._rooms
+                .All();
+
+            return rooms.ToList();
+        }
     }
 }
