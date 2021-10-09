@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-const Room = () => {
+const Room = ({
+    id,
+    name,
+    capacity
+}) => {
     return (
-        <Link to="/slots" className="room">
+        <Link to={`/slots/${id}}`} className="room">
             <span>
                 <span>Name: </span>
                 Iskar
