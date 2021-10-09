@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using MeetingSchedulingApplication.Services.Models;
 
-namespace MeetingSchedulingApplication.Services
+namespace MeetingSchedulingApplication.Services.Slots
 {
     public interface ISlotsService
     {

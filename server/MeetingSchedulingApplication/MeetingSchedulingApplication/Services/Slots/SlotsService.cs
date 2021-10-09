@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MeetingSchedulingApplication.Data;
 using MeetingSchedulingApplication.Services.Models;
 
-namespace MeetingSchedulingApplication.Services
+namespace MeetingSchedulingApplication.Services.Slots
 {
     public class SlotsService : ISlotsService
     {

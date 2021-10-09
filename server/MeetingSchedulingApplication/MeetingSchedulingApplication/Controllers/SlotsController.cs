@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using MeetingSchedulingApplication.Models;
-using MeetingSchedulingApplication.Services;
+using MeetingSchedulingApplication.Services.Slots;
 using MeetingSchedulingApplication.Services.Models;
 
 namespace MeetingSchedulingApplication.Controllers
 {
     [Route("api/slots")]
+    [ApiController]
     public class SlotsController : ControllerBase
     {
         private readonly ISlotsService _slots;
