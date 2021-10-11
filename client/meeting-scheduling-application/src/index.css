@@ -29,7 +29,9 @@ html {
     row-gap: 10px;
 }
 
-.rooms-container .room {
+.rooms-container .room,
+.rooms-container .room:focus,
+.rooms-container .room:active {
     display: flex;
     flex-direction: column;
     background: #AAF240;
@@ -39,6 +41,7 @@ html {
     border: none;
     border-radius: 7px;
     text-decoration: none;
+    color: inherit;
 }
 
 .rooms-container .room:hover {
