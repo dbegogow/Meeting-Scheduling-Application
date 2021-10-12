@@ -21,11 +21,6 @@ namespace MeetingSchedulingApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<List<SlotServiceModel>>> Get(SearchSlotsModel searchSlots)
         {
-            if (!ModelState.IsValid)
-            {
-                return NotFound();
-            }
-
             var durationArr = searchSlots.Duration
                 .Split(":")
                 .Select(int.Parse)

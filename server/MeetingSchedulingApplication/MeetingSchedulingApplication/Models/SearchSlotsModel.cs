@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeetingSchedulingApplication.Models
 {
@@ -8,6 +9,7 @@ namespace MeetingSchedulingApplication.Models
 
         public DateTime Date { get; init; }
 
+        [RegularExpression(@"^\d\d:\d\d$")]
         public string Duration { get; init; }
     }
 }
