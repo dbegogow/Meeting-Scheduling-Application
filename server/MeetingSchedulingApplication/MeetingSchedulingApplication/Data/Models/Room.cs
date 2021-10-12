@@ -19,8 +19,6 @@ namespace MeetingSchedulingApplication.Data.Models
 
         public TimeSpan AvailableTo { get; init; }
 
-        public DateTime Date { get; init; }
-
         public ICollection<Slot> Schedule { get; init; } = new HashSet<Slot>();
     }
 }

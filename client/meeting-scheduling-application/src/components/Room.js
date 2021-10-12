@@ -6,7 +6,7 @@ const Room = ({
     capacity
 }) => {
     return (
-        <Link to={`/slots/${id}}`} className="room">
+        <Link to={`/slots/${id}`} className="room">
             <span>
                 <span>Name: </span>
                 {name}

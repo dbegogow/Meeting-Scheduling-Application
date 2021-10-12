@@ -6,10 +6,11 @@ import Room from './components/Room';
 import Slots from './components/Slots';
 
 const App = () => {
+    const [date, setDate] = useState(new Date());
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        getAllRooms()
+        getAllRooms(date)
             .then(rooms => setRooms(rooms));
     }, []);
 
@@ -18,7 +19,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/">
                     <h1>Select a Date and Room</h1>
-                    <ScheduleCalendar />
+                    <ScheduleCalendar setDate={setDate} />
                     <div className="rooms-container">
                         {
                             rooms?.map(room =>
@@ -31,8 +32,8 @@ const App = () => {
                         }
                     </div>
                 </Route>
-                <Route path="/slots">
-                    <Slots />
+                <Route path="/slots/:id">
+                    <Slots date={date} />
                 </Route>
             </Switch>
         </div>

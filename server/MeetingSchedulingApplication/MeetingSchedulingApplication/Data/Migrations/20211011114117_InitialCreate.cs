@@ -15,8 +15,7 @@ namespace MeetingSchedulingApplication.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Capacity = table.Column<int>(type: "int", nullable: false),
                     AvailableFrom = table.Column<TimeSpan>(type: "time", nullable: false),
-                    AvailableTo = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    AvailableTo = table.Column<TimeSpan>(type: "time", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,6 +30,7 @@ namespace MeetingSchedulingApplication.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     From = table.Column<TimeSpan>(type: "time", nullable: false),
                     To = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RoomId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>

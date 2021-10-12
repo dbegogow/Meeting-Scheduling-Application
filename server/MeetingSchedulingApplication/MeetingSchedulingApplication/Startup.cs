@@ -63,6 +63,8 @@ namespace MeetingSchedulingApplication
             }
 
             app
+                .UseDefaultFiles()
+                .UseStaticFiles()
                 .UseHttpsRedirection()
                 .UseRouting()
                 .UseCors()

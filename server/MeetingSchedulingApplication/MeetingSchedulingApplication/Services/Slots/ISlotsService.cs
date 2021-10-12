@@ -8,7 +8,7 @@ namespace MeetingSchedulingApplication.Services.Slots
     public interface ISlotsService
     {
         Task<IEnumerable<SlotServiceModel>> EmptySlots(
-            string roomName,
+            string roomId,
             DateTime date,
             TimeSpan duration);
     }

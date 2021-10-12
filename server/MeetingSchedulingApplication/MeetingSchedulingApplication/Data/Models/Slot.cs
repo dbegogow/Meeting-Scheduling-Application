@@ -10,6 +10,8 @@ namespace MeetingSchedulingApplication.Data.Models
 
         public TimeSpan To { get; init; }
 
+        public DateTime Date { get; init; }
+
         public Room Room { get; init; }
     }
 }

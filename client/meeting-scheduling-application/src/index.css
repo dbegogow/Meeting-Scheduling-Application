@@ -59,6 +59,10 @@ html {
     margin-right: 5px;
 }
 
+.slots-container h1 {
+    margin-bottom: 20px;
+}
+
 .slots-container form {
     display: flex;
     flex-direction: column;

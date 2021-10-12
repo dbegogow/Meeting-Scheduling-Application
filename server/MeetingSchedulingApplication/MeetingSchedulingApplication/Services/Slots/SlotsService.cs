@@ -16,31 +16,36 @@ namespace MeetingSchedulingApplication.Services.Slots
             => this._data = data;
 
         public async Task<IEnumerable<SlotServiceModel>> EmptySlots(
-            string roomName,
+            string roomId,
             DateTime date,
             TimeSpan duration)
         {
             var room = await this._data
                 .Rooms
-                .FirstOrDefaultAsync(r => r.Name == roomName && r.Date == date);
+                .Where(r => r.Id == roomId)
+                .Select(r => new RoomScheduleServiceModel
+                {
+                    AvailableFrom = r.AvailableFrom,
+                    AvailableTo = r.AvailableTo,
+                    Schedule = r.Schedule
+                })
+                .FirstOrDefaultAsync();
 
             if (room == null)
             {
                 return null;
             }
 
-            var schedule = room.Schedule;
-
             var emptySlots = new List<SlotServiceModel>();
 
-            for (int hours = room.AvailableFrom.Hours; hours < room.AvailableTo.Hours; hours++)
+            for (int hours = room.AvailableFrom.Hours; hours < room.AvailableTo.Hours - (duration.Hours + duration.Minutes == 0 ? 0 : 2); hours++)
             {
                 for (int minutes = 15; minutes <= 45; minutes += 15)
                 {
                     var now = new TimeSpan(hours, minutes, 0);
                     var currentMeeting = now + duration;
 
-                    if (schedule.Any(s =>
+                    if (room.Schedule.Any(s =>
                             s.From <= currentMeeting &&
                             s.To >= currentMeeting))
                     {

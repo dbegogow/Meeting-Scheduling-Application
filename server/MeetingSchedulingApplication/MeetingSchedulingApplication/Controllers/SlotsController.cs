@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -17,16 +18,23 @@ namespace MeetingSchedulingApplication.Controllers
         public SlotsController(ISlotsService slots)
             => this._slots = slots;
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SlotServiceModel>>> Get([FromForm] SearchSlotsModel searchSlots)
+        [HttpPost]
+        public async Task<ActionResult<List<SlotServiceModel>>> Get(SearchSlotsModel searchSlots)
         {
             if (!ModelState.IsValid)
             {
                 return NotFound();
             }
 
+            var durationArr = searchSlots.Duration
+                .Split(":")
+                .Select(int.Parse)
+                .ToArray();
+
+            var duration = new TimeSpan(durationArr[0], durationArr[1], 0);
+
             var emptySlots = await this._slots
-                .EmptySlots(searchSlots.Name, searchSlots.Date, searchSlots.Duration);
+                .EmptySlots(searchSlots.Id, searchSlots.Date, duration);
 
             if (emptySlots == null)
             {
