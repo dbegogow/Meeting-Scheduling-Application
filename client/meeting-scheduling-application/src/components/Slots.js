@@ -24,19 +24,16 @@ const Slots = ({ date }) => {
             <form onSubmit={serachSlots}>
                 <h1>Slots</h1>
                 <label htmlFor="duration">Meeting Duration</label>
-                <input type="text" id="duration" name="duration" placeholder="01:30" />
+                <input type="text" id="duration" name="duration" placeholder="1:30" />
                 <button>Search for slots</button>
             </form>
             <div className="slots">
-                <button>12:30</button>
-                <button>12:30</button>
-                <button>12:30</button>
-                <button>12:30</button>
-                <button>12:30</button>
-                <button>12:30</button>
-                <button>12:30</button>
+                {
+                    slots?.map((s, index) =>
+                        <button key={index}>{`${s.availableFrom.hours}:${s.availableFrom.minutes}`}</button>)
+                }
             </div>
-        </div>
+        </div >
     );
 };
 

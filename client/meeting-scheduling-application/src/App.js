@@ -12,7 +12,7 @@ const App = () => {
     useEffect(() => {
         getAllRooms(date)
             .then(rooms => setRooms(rooms));
-    }, []);
+    }, [date]);
 
     return (
         <div className="app">

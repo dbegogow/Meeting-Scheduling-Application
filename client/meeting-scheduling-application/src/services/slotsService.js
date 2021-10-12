@@ -10,6 +10,5 @@ export const getSlots = (id, duration, date) => {
         body: JSON.stringify({ id, duration, date })
     })
         .then(res => res.json())
-        .then(res => console.log(res))
         .catch(() => alert('Failed to load resources.'));
 };
